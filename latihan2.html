@@ -9,17 +9,33 @@
     <div id="myApp">
       <h1>Coba Vue</h1>
       <!-- <button-counter></button-counter> -->
-      <blog-post title="Blog 1"></blog-post>
-      <blog-post title="Blog 2"></blog-post>
-      <blog-post title="Blog 3"></blog-post>
+      <blog-post title="Blog 1" @counter="count()"></blog-post>
+      <blog-post title="Blog 2" @counter="count()"></blog-post>
+      <blog-post title="Blog 3" @counter="count()"></blog-post>
+      <h4>Total selesai {{total}}</h4>
     </div>
   </body>
+  <script type="text/x-template" id="template">
+    <h3>{{title}}</h3>
+    <button @click="$emit('counter')">Selesai</button>
+  </script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
-    const app = Vue.createApp({});
+    const app = Vue.createApp({
+      data() {
+        return {
+          total: 0,
+        };
+      },
+      methods: {
+        count() {
+          this.total++;
+        },
+      },
+    });
     app.component("blog-post", {
       props: ["title"],
-      template: `<h3>{{title}}</h3>`,
+      template: "#template",
     });
     app.mount("#myApp");
   </script>
