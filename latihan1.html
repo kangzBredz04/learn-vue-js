@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: blue;
+      }
+      ul {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <h1>Belajar {{name}}</h1>
+      <p>Angka : {{number}}</p>
+      <input type="text" v-model="name" />
+      <button v-on:click="handleClick()">Klik</button>
+      <button v-on:click="handleCheck()">Cek Nilai</button>
+      <p>Nilai : {{score}}</p> -->
+      <ul :class="{active: isActive}">
+        <li v-for="(data, index) in person" :key="data.id">
+          {{data.name}} - {{data.age}} tahun
+        </li>
+      </ul>
+      <button v-on:click="handleColor()">
+        {{isActive === false ? "Biru" : "Merah"}}
+      </button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const sample = {};
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: "Basic VueJS",
+            number: 0,
+            score: 0,
+            person: [
+              { id: 1, name: "Wahyu", age: 20 },
+              { id: 2, name: "Wabredz", age: 21 },
+              { id: 3, name: "Jebredz", age: 22 },
+            ],
+            isActive: false,
+          };
+        },
+        mounted() {
+          setInterval(() => {
+            this.number++;
+          }, 500);
+        },
+        methods: {
+          handleClick() {
+            this.name = this.name + " !!!";
+          },
+          handleCheck() {
+            this.name === "VueJS" ? (this.score = 100) : (this.score = -50);
+          },
+          handleColor() {
+            this.isActive = !this.isActive;
+          },
+        },
+      });
+      app.mount("#app");
+      mou;
+    </script>
+  </body>
+</html>
