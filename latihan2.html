@@ -8,14 +8,18 @@
   <body>
     <div id="myApp">
       <h1>Coba Vue</h1>
-      <blog-post post-title="hello!"></blog-post>
+      <!-- <button-counter></button-counter> -->
+      <blog-post title="Blog 1"></blog-post>
+      <blog-post title="Blog 2"></blog-post>
+      <blog-post title="Blog 3"></blog-post>
     </div>
   </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script>
     const app = Vue.createApp({});
     app.component("blog-post", {
-      props: ["postTitle"],
-      template: `<h3>{{postTitle}}</h3>`,
+      props: ["title"],
+      template: `<h3>{{title}}</h3>`,
     });
     app.mount("#myApp");
   </script>
